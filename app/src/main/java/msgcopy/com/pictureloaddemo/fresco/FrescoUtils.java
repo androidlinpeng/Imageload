@@ -35,33 +35,52 @@ import static com.facebook.drawee.backends.pipeline.Fresco.newDraweeControllerBu
  */
 
 /**
- * android:layout_width="20dp"
- * android:layout_height="20dp"
- * fresco:fadeDuration="300" // 淡出时间，毫秒。
- * fresco:actualImageScaleType="focusCrop" // 等同于android:scaleType。
- * fresco:placeholderImage="@color/wait_color" // 加载中…时显示的图。
- * fresco:placeholderImageScaleType="fitCenter" // 加载中…显示图的缩放模式。
- * fresco:failureImage="@drawable/error" // 加载失败时显示的图。
- * fresco:failureImageScaleType="centerInside" // 加载失败时显示图的缩放模式。
- * fresco:retryImage="@drawable/retrying" // 重试时显示图。
- * fresco:retryImageScaleType="centerCrop" // 重试时显示图的缩放模式。
- * fresco:progressBarImage="@drawable/progress_bar" // 进度条显示图。
- * fresco:progressBarImageScaleType="centerInside" // 进度条时显示图的缩放模式。
- * fresco:progressBarAutoRotateInterval="1000" // 进度条旋转时间间隔。
- * fresco:backgroundImage="@color/blue" // 背景图，不会被View遮挡。
- * <p>
- * fresco:roundAsCircle="false" // 是否是圆形图片。
- * fresco:roundedCornerRadius="1dp" // 四角圆角度数，如果是圆形图片，这个属性被忽略。
- * fresco:roundTopLeft="true" // 左上角是否圆角。
- * fresco:roundTopRight="false" // 右上角是否圆角。
- * fresco:roundBottomLeft="false" // 左下角是否圆角。
- * fresco:roundBottomRight="true" // 左下角是否圆角。
- * fresco:roundingBorderWidth="2dp" // 描边的宽度。
- * fresco:roundingBorderColor="@color/border_color" 描边的颜色。
+ * FrescoDraweeView在xml中设置的属性说明：
+ * android:id="@+id/my_image_view" 【属性说明】id
+ * android:layout_width="20dp" 【属性说明】设置宽度，不支持wrap，如果要设置宽高比, 需要在Java代码中指定，setAspectRatio(1.33f);
+ * android:layout_height="20dp" 【属性说明】设置高度，不支持wrap
+ * fresco:fadeDuration="300" 【属性说明】显示动画设置时长，单位毫秒
+ * fresco:actualImageScaleType="focusCrop" 【属性说明】设置图片缩放. 通常使用focusCrop,该属性值会通过算法把人头像放在中间
+ * fresco:placeholderImage="@color/wait_color" 【属性说明】默认图片（下载成功之前显示的图片）
+ * fresco:placeholderImageScaleType="fitCenter"
+ * fresco:failureImage="@drawable/error" 【属性说明】加载失败的时候显示的图片
+ * fresco:failureImageScaleType="centerInside"
+ * fresco:retryImage="@drawable/retrying" 【属性说明】加载失败,提示用户点击重新加载的图片(会覆盖failureImage的图片)
+ * fresco:retryImageScaleType="centerCrop"
+ * fresco:progressBarImage="@drawable/progress_bar" 【属性说明】提示用户正在加载,和加载进度无关
+ * fresco:progressBarImageScaleType="centerInside"
+ * fresco:progressBarAutoRotateInterval="1000"
+ * fresco:backgroundImage="@color/blue"
+ * fresco:overlayImage="@drawable/watermark"
+ * fresco:pressedStateOverlayImage="@color/red"
+ * fresco:roundAsCircle="false" 【属性说明】是不是设置圆圈
+ * fresco:roundedCornerRadius="1dp" 【属性说明】圆角角度,180的时候会变成圆形图片
+ * fresco:roundTopLeft="true"
+ * fresco:roundTopRight="false"
+ * fresco:roundBottomLeft="false"
+ * fresco:roundBottomRight="true"
+ * fresco:roundWithOverlayColor="@color/corner_color"
+ * fresco:roundingBorderWidth="2dp"
+ * fresco:roundingBorderColor="@color/border_color"
  */
 
 
 public class FrescoUtils {
+
+    public static void ReducePic(SimpleDraweeView draweeView, String url,int reqWidth, int reqHeight){
+
+        Uri uri = Uri.parse(url);
+        ImageRequest imageRequest = ImageRequestBuilder.newBuilderWithSource(uri)
+                .setResizeOptions(new ResizeOptions(reqWidth,reqHeight))//图片压缩.jpg
+                .setProgressiveRenderingEnabled(true)//支持图片渐进式加载
+                .setAutoRotateEnabled(true) //如果图片是侧着,可以自动旋转
+                .build();
+        DraweeController draweeController = newDraweeControllerBuilder()
+                .setOldController(draweeView.getController())
+                .setImageRequest(imageRequest)
+                .build();
+        draweeView.setController(draweeController);
+    }
 
     public static void LoadGif(SimpleDraweeView draweeView, String url){
         Uri uri = Uri.parse(url);
@@ -92,8 +111,10 @@ public class FrescoUtils {
     public static void LoadBitmap(final ImageView imageView, String url, int reqWidth, int reqHeight){
 
         Uri uri = Uri.parse(url);
-        ImagePipeline imagePipeline = Fresco.getImagePipeline();
 
+        ImagePipeline imagePipeline = Fresco.getImagePipeline();
+//        //检查bitmap是否在缓存中
+//        boolean inMemoryCache = imagePipeline.isInBitmapMemoryCache(uri);
         ImageRequest imageRequest = ImageRequestBuilder.newBuilderWithSource(uri)
                 .setResizeOptions(new ResizeOptions(reqWidth, reqHeight))
                 .build();

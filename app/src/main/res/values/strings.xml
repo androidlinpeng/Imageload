@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PictureLoadDemo</string>
+
+    <string name="menu_item_clear_memory_cache">清除内存缓存</string>
+    <string name="menu_item_clear_disc_cache">清除磁盘缓存</string>
+
 </resources>

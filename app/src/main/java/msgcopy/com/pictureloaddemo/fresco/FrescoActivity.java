@@ -7,6 +7,8 @@ import android.view.View;
 
 import msgcopy.com.pictureloaddemo.R;
 
+import static msgcopy.com.pictureloaddemo.R.id.reduce;
+
 public class FrescoActivity extends AppCompatActivity {
 
     @Override
@@ -36,6 +38,12 @@ public class FrescoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(FrescoActivity.this,GifActivity.class));
+            }
+        });
+        findViewById(reduce).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FrescoActivity.this,ReduceActivity.class));
             }
         });
     }

@@ -1,11 +1,12 @@
 package msgcopy.com.pictureloaddemo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import msgcopy.com.pictureloaddemo.fresco.FrescoActivity;
+import msgcopy.com.pictureloaddemo.imageloader.ImageLoaderActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.fresco:
                 startActivity(new Intent(MainActivity.this,FrescoActivity.class));
+                break;
+            case R.id.image_loader:
+                startActivity(new Intent(MainActivity.this,ImageLoaderActivity.class));
                 break;
             default:
                 break;

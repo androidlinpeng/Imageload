@@ -25,7 +25,12 @@
         <activity android:name=".fresco.BaseActivity" />
         <activity android:name=".fresco.BlurActivity" />
         <activity android:name=".fresco.BitmapActivity" />
-        <activity android:name=".fresco.GifActivity"></activity>
+        <activity android:name=".fresco.GifActivity" />
+        <activity android:name=".fresco.ReduceActivity" />
+        <activity android:name=".imageloader.ImageLoaderActivity" />
+        <activity android:name=".imageloader.ImageLoadTypeActivity" />
+        <activity android:name=".imageloader.ImageShowTypeActivity" />
+        <activity android:name=".imageloader.ImageLoadBaseActivity"></activity>
     </application>
 
 </manifest>
