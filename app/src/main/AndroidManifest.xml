@@ -30,7 +30,9 @@
         <activity android:name=".imageloader.ImageLoaderActivity" />
         <activity android:name=".imageloader.ImageLoadTypeActivity" />
         <activity android:name=".imageloader.ImageShowTypeActivity" />
-        <activity android:name=".imageloader.ImageLoadBaseActivity"></activity>
+        <activity android:name=".imageloader.ImageLoadBaseActivity" />
+        <activity android:name=".glide.GlideActivity" />
+        <activity android:name=".glide.GlideBaseActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import msgcopy.com.pictureloaddemo.fresco.FrescoActivity;
+import msgcopy.com.pictureloaddemo.glide.GlideBaseActivity;
 import msgcopy.com.pictureloaddemo.imageloader.ImageLoaderActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.image_loader:
                 startActivity(new Intent(MainActivity.this,ImageLoaderActivity.class));
+                break;
+            case R.id.glide:
+                startActivity(new Intent(MainActivity.this,GlideBaseActivity.class));
                 break;
             default:
                 break;

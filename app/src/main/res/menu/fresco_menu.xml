@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/evictFromMemoryCache"
+        android:title="evictFromMemoryCache" />
+    <item
+        android:id="@+id/evictFromDiskCache"
+        android:title="evictFromDiskCache" />
+    <item
+        android:id="@+id/clearMemoryCaches"
+        android:title="evictFromDiskCache" />
+    <item
+        android:id="@+id/clearDiskCaches"
+        android:title="evictFromDiskCache" />
+    <item
+        android:id="@+id/clearCaches"
+        android:title="clearCaches" />
+
+</menu>

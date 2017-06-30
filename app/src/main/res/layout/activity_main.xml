@@ -33,10 +33,11 @@
         tools:layout_editor_absoluteY="66dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/glide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="glide"
+        android:onClick="onClick"
         android:layout_marginTop="21dp"
         android:layout_below="@+id/image_loader"
         android:layout_alignParentLeft="true"
